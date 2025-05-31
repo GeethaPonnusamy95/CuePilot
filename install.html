@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Install CuePilot - Installation Guide</title>
+    <title>CuePilot - AI-Powered Writing Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,9 +15,20 @@
                         'purple-glow': '#8b5cf6',
                     },
                     animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
                         'gradient': 'gradient 8s ease infinite',
+                        'typing': 'typing 3.5s steps(40, end)',
                     },
                     keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { filter: 'brightness(100%)' },
+                            '50%': { filter: 'brightness(150%)' },
+                        },
                         gradient: {
                             '0%, 100%': {
                                 'background-size': '200% 200%',
@@ -27,6 +38,10 @@
                                 'background-size': '200% 200%',
                                 'background-position': 'right center',
                             },
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' },
                         },
                     },
                 },
@@ -50,128 +65,335 @@
             animation: gradient 8s ease infinite;
         }
 
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 128, 255, 0.3);
+        }
+
+        .typing-demo {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+
         body {
             background-color: #111827;
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Background particles */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
     </style>
 </head>
 <body class="text-white">
+    <!-- Background particles -->
+    <div id="particles"></div>
+
     <!-- Navigation -->
     <nav class="fixed top-0 w-full glass z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
-                <a href="index.html" class="text-2xl font-bold gradient-text">CuePilot</a>
+                <a href="#" class="text-2xl font-bold gradient-text">CuePilot</a>
                 <div class="hidden md:flex space-x-8">
-                    <a href="index.html#features" class="hover:text-electric-blue transition-colors">Features</a>
-                    <a href="index.html#demo" class="hover:text-electric-blue transition-colors">Demo</a>
-                    <a href="index.html#download" class="hover:text-electric-blue transition-colors">Download</a>
-                    <a href="index.html#support" class="hover:text-electric-blue transition-colors">Support</a>
+                    <a href="#features" class="hover:text-electric-blue transition-colors">Features</a>
+                    <a href="#demo" class="hover:text-electric-blue transition-colors">Demo</a>
+                    <a href="#download" class="hover:text-electric-blue transition-colors">Download</a>
+                    <a href="#support" class="hover:text-electric-blue transition-colors">Support</a>
                 </div>
+                <button class="md:hidden">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Installation Guide -->
-    <div class="container mx-auto px-6 pt-32 pb-20">
-        <h1 class="text-4xl md:text-6xl font-bold text-center mb-12">
-            <span class="gradient-text">Installation Guide</span>
-        </h1>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center relative">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                <span class="block">Transform Your Writing with</span>
+                <span class="gradient-text">AI-Powered Intelligence</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
+                Seamlessly integrate cutting-edge AI into any macOS app. One hotkey away from perfect writing, instant replies, and productivity that scales.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="install.html" class="px-8 py-4 rounded-lg bg-gradient-to-r from-electric-blue to-purple-glow animate-glow font-bold text-lg hover:opacity-90 transition-opacity">
+                    Download for macOS
+                </a>
+                <a href="#demo" class="px-8 py-4 rounded-lg glass font-bold text-lg hover:bg-opacity-20 transition-all">
+                    Watch Demo
+                </a>
+            </div>
 
-        <div class="max-w-3xl mx-auto">
-            <!-- macOS Installation -->
-            <div class="glass rounded-xl p-8 mb-12">
-                <h2 class="text-3xl font-bold mb-8 gradient-text">macOS Installation</h2>
-                
-                <div class="space-y-8">
-                    <!-- Step 1 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-3">1</span>
-                            Download the App
-                        </h3>
-                        <p class="text-gray-300 mb-4">Download the appropriate version for your Mac:</p>
-                        <div class="space-y-2">
-                            <a href="#" class="block glass hover:bg-opacity-20 p-4 rounded-lg transition-all">
-                                <span class="text-neon-green">→</span> Apple Silicon (M1/M2): Download ARM64 version
-                            </a>
-                            <a href="#" class="block glass hover:bg-opacity-20 p-4 rounded-lg transition-all">
-                                <span class="text-neon-green">→</span> Intel Processor: Download Intel version
-                            </a>
-                        </div>
-                    </div>
+            <!-- Floating Badges -->
+            <div class="relative h-96 mt-20">
+                <div class="particle glass rounded-xl p-4 absolute right-20 top-5" style="animation-delay: 2s">
+                    🎯 Smart Actions
+                </div>
+                <div class="particle glass rounded-xl p-4 absolute left-10 bottom-5" style="animation-delay: 3s">
+                    🔒 Privacy First
+                </div>
+                <div class="particle glass rounded-xl p-4 absolute left-20 top-32" style="animation-delay: 4s">
+                    🖥️ Local Processing
+                </div>
+                <div class="particle glass rounded-xl p-4 absolute right-40 top-25" style="animation-delay: 5s">
+                    🛡️ Secure Storage
+                </div>
+                <div class="particle glass rounded-xl p-4 absolute left-20 top-8" style="animation-delay: 6s">
+                    🚫 No Data Collection
+                </div>
+                <div class="particle glass rounded-xl p-4 absolute right-20 top-32" style="animation-delay: 7s">
+                    ⚙️ Minimal Permissions
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Step 2 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-3">2</span>
-                            Security Warning
-                        </h3>
-                        <div class="glass p-6 rounded-lg mb-4">
-                            <p class="text-gray-300">"CuePilot" cannot be opened because the developer cannot be verified.</p>
-                        </div>
-                        <p class="text-gray-300">This is normal for open-source applications. Follow the next steps to proceed with installation.</p>
-                    </div>
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Powerful Features</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass rounded-xl p-8 hover-lift">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold mb-4">Action Menu</h3>
+                    <p class="text-gray-300">Improve, fix, paraphrase, or reply to any text with intelligent AI suggestions</p>
+                    <div class="mt-4 text-electric-blue">⌘ + Shift + A</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="text-xl font-bold mb-4">Smart Processing</h3>
+                    <p class="text-gray-300">Advanced text analysis and processing with context-aware AI understanding</p>
+                    <div class="mt-4 text-electric-blue">Auto-detect context</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-4">Customizable</h3>
+                    <p class="text-gray-300">Tailor AI behavior, shortcuts, and preferences to match your workflow</p>
+                    <div class="mt-4 text-electric-blue">Full customization</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <!-- Step 3 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="w-8 h-8 rounded-full bg-purple-glow flex items-center justify-center mr-3">3</span>
-                            Allow App Installation
-                        </h3>
-                        <ol class="list-decimal list-inside space-y-2 text-gray-300">
-                            <li>Open <strong>System Settings</strong> on your Mac</li>
-                            <li>Go to <strong>Privacy & Security</strong></li>
-                            <li>Scroll down to <strong>Security</strong></li>
-                            <li>Look for the message about CuePilot</li>
-                            <li>Click <strong>Open Anyway</strong></li>
-                        </ol>
-                    </div>
-
-                    <!-- Step 4 -->
-                    <div>
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
-                            <span class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-3">4</span>
-                            Final Confirmation
-                        </h3>
-                        <p class="text-gray-300">Click <strong>Open</strong> in the final confirmation dialog to launch the app.</p>
-                        <p class="text-gray-300 mt-4">The app will now be saved as a trusted application on your system, and you won't see these warnings again.</p>
-                    </div>
+    <!-- How to Use Section -->
+    <section id="demo" class="py-20 px-6 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">How to Use CuePilot</h2>
+            
+            <!-- Before/After Example -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="glass rounded-xl p-8">
+                    <h3 class="text-xl font-bold mb-4">Before</h3>
+                    <p class="text-gray-300">hey can you send me the files for the project? i need them asap for the meeting tomorrow</p>
+                </div>
+                <div class="glass rounded-xl p-8">
+                    <h3 class="text-xl font-bold mb-4">After</h3>
+                    <p class="text-gray-300">Dear [Name],<br><br>I hope this email finds you well. Could you please share the project files with me? I need them for tomorrow's meeting.<br><br>Thank you for your assistance.<br><br>Best regards,<br>[Your name]</p>
                 </div>
             </div>
 
-            <!-- System Requirements -->
-            <div class="glass rounded-xl p-8">
-                <h2 class="text-2xl font-bold mb-6 gradient-text">System Requirements</h2>
-                <ul class="space-y-3 text-gray-300">
-                    <li class="flex items-center">
-                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        macOS 11.0 or later
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Compatible with both Intel and Apple Silicon Macs
-                    </li>
-                    <li class="flex items-center">
-                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        Minimum 4GB RAM recommended
-                    </li>
-                </ul>
+            <!-- Steps -->
+            <div class="flex flex-wrap justify-center gap-8 mb-16">
+                <div class="glass rounded-full w-16 h-16 flex items-center justify-center bg-electric-blue">1</div>
+                <div class="glass rounded-full w-16 h-16 flex items-center justify-center bg-neon-green">2</div>
+                <div class="glass rounded-full w-16 h-16 flex items-center justify-center bg-purple-glow">3</div>
+                <div class="glass rounded-full w-16 h-16 flex items-center justify-center bg-electric-blue">4</div>
+                <div class="glass rounded-full w-16 h-16 flex items-center justify-center bg-neon-green">5</div>
+            </div>
+
+            <div class="text-center">
+                <a href="install.html" class="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-electric-blue to-purple-glow animate-glow font-bold text-lg hover:opacity-90 transition-opacity">
+                    Download & Get Started
+                </a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Works Everywhere</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">💬</div>
+                    <div>Slack</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">🎮</div>
+                    <div>Discord</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">📝</div>
+                    <div>Notes</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">📧</div>
+                    <div>Mail</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">🌐</div>
+                    <div>Safari</div>
+                </div>
+                <div class="glass rounded-xl p-8 hover-lift text-center">
+                    <div class="text-4xl mb-2">⚡</div>
+                    <div>And More</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="download" class="py-20 px-6 bg-gray-900">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 gradient-text">Ready to Transform Your Writing?</h2>
+            <div class="max-w-lg mx-auto glass rounded-xl p-8">
+                <div class="text-center mb-8">
+                    <div class="gradient-text text-6xl font-bold mb-2">Free</div>
+                    <div class="text-gray-300">Beta Version</div>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Unlimited AI-powered text improvements
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Universal macOS app integration
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Privacy-first local processing
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Regular updates and improvements
+                    </li>
+                </ul>
+                <div class="text-center">
+                    <a href="install.html" class="inline-block px-8 py-4 rounded-lg bg-gradient-to-r from-electric-blue to-purple-glow animate-glow font-bold text-lg hover:opacity-90 transition-opacity">
+                        Download for macOS
+                    </a>
+                </div>
+                <div class="text-center mt-8 text-sm text-gray-400">
+                    macOS 11.0+, Intel & Apple Silicon, Notarized & Secure
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6">
-        <div class="container mx-auto text-center">
-            <p class="text-gray-400">© 2024 CuePilot. Built with ❤️ for macOS productivity.</p>
+    <footer class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="col-span-2">
+                    <div class="gradient-text text-2xl font-bold mb-4">CuePilot</div>
+                    <p class="text-gray-300">Transform your writing with AI-powered intelligence. CuePilot seamlessly integrates with your workflow to enhance productivity and writing quality.</p>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Documentation</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">API Reference</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">GitHub</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Changelog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Support</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-electric-blue">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12 text-gray-400">
+                © 2024 CuePilot. Built with ❤️ for macOS productivity.
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Create background particles
+        function createParticles() {
+            const colors = ['#0080ff', '#00ff80', '#8b5cf6'];
+            const container = document.getElementById('particles');
+            
+            for (let i = 0; i < 5; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 200 + 100 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.opacity = '0.1';
+                container.appendChild(particle);
+            }
+        }
+
+        createParticles();
+    </script>
 </body>
 </html> 
