@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install CuePilot - Installation Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'electric-blue': '#0080ff',
+                        'neon-green': '#00ff80',
+                        'purple-glow': '#8b5cf6',
+                    },
+                    animation: {
+                        'gradient': 'gradient 8s ease infinite',
+                    },
+                    keyframes: {
+                        gradient: {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center',
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center',
+                            },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #0080ff, #00ff80, #8b5cf6);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 8s ease infinite;
+        }
+
+        body {
+            background-color: #111827;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full glass z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-bold gradient-text">CuePilot</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#features" class="hover:text-electric-blue transition-colors">Features</a>
+                    <a href="index.html#demo" class="hover:text-electric-blue transition-colors">Demo</a>
+                    <a href="index.html#download" class="hover:text-electric-blue transition-colors">Download</a>
+                    <a href="index.html#support" class="hover:text-electric-blue transition-colors">Support</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Installation Guide -->
+    <div class="container mx-auto px-6 pt-32 pb-20">
+        <h1 class="text-4xl md:text-6xl font-bold text-center mb-12">
+            <span class="gradient-text">Installation Guide</span>
+        </h1>
+
+        <div class="max-w-3xl mx-auto">
+            <!-- macOS Installation -->
+            <div class="glass rounded-xl p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">macOS Installation</h2>
+                
+                <div class="space-y-8">
+                    <!-- Step 1 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-3">1</span>
+                            Download the App
+                        </h3>
+                        <p class="text-gray-300 mb-4">Download the appropriate version for your Mac:</p>
+                        <div class="space-y-2">
+                            <a href="#" class="block glass hover:bg-opacity-20 p-4 rounded-lg transition-all">
+                                <span class="text-neon-green">→</span> Apple Silicon (M1/M2): Download ARM64 version
+                            </a>
+                            <a href="#" class="block glass hover:bg-opacity-20 p-4 rounded-lg transition-all">
+                                <span class="text-neon-green">→</span> Intel Processor: Download Intel version
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-neon-green flex items-center justify-center mr-3">2</span>
+                            Security Warning
+                        </h3>
+                        <div class="glass p-6 rounded-lg mb-4">
+                            <p class="text-gray-300">"CuePilot" cannot be opened because the developer cannot be verified.</p>
+                        </div>
+                        <p class="text-gray-300">This is normal for open-source applications. Follow the next steps to proceed with installation.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-purple-glow flex items-center justify-center mr-3">3</span>
+                            Allow App Installation
+                        </h3>
+                        <ol class="list-decimal list-inside space-y-2 text-gray-300">
+                            <li>Open <strong>System Settings</strong> on your Mac</li>
+                            <li>Go to <strong>Privacy & Security</strong></li>
+                            <li>Scroll down to <strong>Security</strong></li>
+                            <li>Look for the message about CuePilot</li>
+                            <li>Click <strong>Open Anyway</strong></li>
+                        </ol>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <span class="w-8 h-8 rounded-full bg-electric-blue flex items-center justify-center mr-3">4</span>
+                            Final Confirmation
+                        </h3>
+                        <p class="text-gray-300">Click <strong>Open</strong> in the final confirmation dialog to launch the app.</p>
+                        <p class="text-gray-300 mt-4">The app will now be saved as a trusted application on your system, and you won't see these warnings again.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Requirements -->
+            <div class="glass rounded-xl p-8">
+                <h2 class="text-2xl font-bold mb-6 gradient-text">System Requirements</h2>
+                <ul class="space-y-3 text-gray-300">
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        macOS 11.0 or later
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Compatible with both Intel and Apple Silicon Macs
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-6 h-6 text-neon-green mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Minimum 4GB RAM recommended
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6">
+        <div class="container mx-auto text-center">
+            <p class="text-gray-400">© 2024 CuePilot. Built with ❤️ for macOS productivity.</p>
+        </div>
+    </footer>
+</body>
+</html> 
