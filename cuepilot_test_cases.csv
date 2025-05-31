@@ -1,0 +1,9 @@
+Test Case ID,Title,Preconditions,Steps,Expected Result,Priority
+TC001,Trigger CuePilot via Global Hotkey,CuePilot is running,"1. Open any macOS app (e.g., Notes)
+2. Select a block of text
+3. Press ⌘ + ⇧ + R",CuePilot overlay appears with action menu,High
+TC002,Select 'Improve' action from overlay menu,CuePilot overlay is active with selected text,1. Click 'Improve' from the floating menu,AI-enhanced version of text is generated,High
+TC003,Use Quick Paste to replace text,AI-generated response is ready,1. Click 'Quick Paste' button,Original text in the app is replaced with improved text,Medium
+TC004,Copy AI Output to Clipboard,AI-enhanced output is displayed,1. Click 'Copy to Clipboard',AI response is copied to system clipboard,Medium
+TC005,Launch CuePilot on macOS Startup,System is restarted,"1. Enable 'Launch at login' in settings
+2. Restart the system",CuePilot launches automatically after login,Low
