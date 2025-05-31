@@ -207,6 +207,16 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- AI Assistants Feature -->
+                <div class="glass rounded-2xl p-6 hover-lift group cursor-pointer" onclick="showAIMenu()">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🤖</div>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors duration-300">AI Assistants</h3>
+                    <p class="text-gray-300 text-sm">Access specialized AI writers for blogs, technical docs, customer support, and more</p>
+                    <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="text-xs text-cyan-400">Ctrl + Space</div>
+                    </div>
+                </div>
+                
                 <!-- Action Menu Feature -->
                 <div class="glass rounded-2xl p-6 hover-lift group cursor-pointer">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">🎯</div>
@@ -238,14 +248,14 @@
                 </div>
                 
                 <!-- Customizable Settings -->
-                <div class="glass rounded-2xl p-6 hover-lift group cursor-pointer">
+                <!-- <div class="glass rounded-2xl p-6 hover-lift group cursor-pointer">
                     <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">⚙️</div>
                     <h3 class="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors duration-300">Customizable</h3>
                     <p class="text-gray-300 text-sm">Tailor AI behavior, shortcuts, and preferences to match your workflow</p>
                     <div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div class="text-xs text-orange-500">Full customization</div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -305,6 +315,10 @@
                         <div class="flex items-center justify-between">
                             <div class="bg-gray-800 rounded px-3 py-1 text-sm font-mono">⌘ + Shift + A</div>
                             <span class="text-gray-300 text-sm">Open Action Menu</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="bg-gray-800 rounded px-3 py-1 text-sm font-mono">Ctrl + Space</div>
+                            <span class="text-gray-300 text-sm">Open AI Assistants</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="bg-gray-800 rounded px-3 py-1 text-sm font-mono">⌘ + Shift + G</div>
@@ -417,6 +431,96 @@
                 </div>
             </div>
 
+            <!-- AI Assistants Demo -->
+            <div class="mb-16">
+                <div class="glass rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="text-4xl mr-4">🤖</div>
+                        <h3 class="text-2xl font-bold gradient-text">AI Assistants</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-400">Access Specialized Writers:</h4>
+                            <div class="space-y-3 text-sm text-gray-300">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                                    <span><strong class="text-white">Press</strong> <code class="bg-gray-800 px-1 rounded text-xs">Ctrl+Space</code> (or <code class="bg-gray-800 px-1 rounded text-xs">⌘+Space</code> on Mac) anywhere</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                                    <span><strong class="text-white">Choose</strong> from 6 specialized AI assistants</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+                                    <span><strong class="text-white">Select</strong> quick actions tailored to each assistant</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                    <span><strong class="text-white">Get</strong> context-aware, specialized assistance instantly</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 p-4 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-lg border border-cyan-500/30">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-cyan-400">💡</span>
+                                    <span class="text-sm font-semibold text-cyan-400">Try it now!</span>
+                                </div>
+                                <p class="text-xs text-gray-300">Click the "AI Assistants" feature card above or press <kbd class="bg-gray-700 px-1 py-0.5 rounded text-xs">Ctrl+Space</kbd> to see the demo.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4 text-cyan-400">Available Assistants:</h4>
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="bg-blue-900/30 rounded-lg p-3 border border-blue-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>👨‍💻</span>
+                                        <span class="font-semibold text-white">Software Developer</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Full-stack development, architecture</p>
+                                </div>
+                                <div class="bg-green-900/30 rounded-lg p-3 border border-green-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>💻</span>
+                                        <span class="font-semibold text-white">Coding Assistant</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Code review, debugging, optimization</p>
+                                </div>
+                                <div class="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>🔧</span>
+                                        <span class="font-semibold text-white">Technical Writer</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Documentation, tutorials, APIs</p>
+                                </div>
+                                <div class="bg-orange-900/30 rounded-lg p-3 border border-orange-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>✍️</span>
+                                        <span class="font-semibold text-white">Blog Writer</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Articles, posts, SEO content</p>
+                                </div>
+                                <div class="bg-pink-900/30 rounded-lg p-3 border border-pink-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>💬</span>
+                                        <span class="font-semibold text-white">Customer Support</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">Professional responses, FAQs</p>
+                                </div>
+                                <div class="bg-indigo-900/30 rounded-lg p-3 border border-indigo-500/30">
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <span>🤖</span>
+                                        <span class="font-semibold text-white">General Assistant</span>
+                                    </div>
+                                    <p class="text-xs text-gray-400">General writing and assistance</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Quick Start -->
             <div class="text-center">
                 <div class="glass rounded-xl p-6 max-w-2xl mx-auto">
@@ -459,10 +563,10 @@
                     <div class="text-3xl mb-2">📧</div>
                     <div class="text-sm text-gray-300">Mail</div>
                 </div>
-                <div class="glass rounded-xl p-6 hover-lift text-center">
+                <!-- <div class="glass rounded-xl p-6 hover-lift text-center">
                     <div class="text-3xl mb-2">🌐</div>
                     <div class="text-sm text-gray-300">Safari</div>
-                </div>
+                </div> -->
                 <div class="glass rounded-xl p-6 hover-lift text-center">
                     <div class="text-3xl mb-2">⚡</div>
                     <div class="text-sm text-gray-300">And More</div>
@@ -604,6 +708,7 @@
     </footer>
 
     <script>
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
