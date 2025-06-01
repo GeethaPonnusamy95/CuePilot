@@ -693,6 +693,202 @@ I'll update the AI assistants to only include the 6 specific assistants you ment
 
 ---
 
+Now I need to update the actions for these new assistants:
+
+---
+
+```diff
+          function showAssistantActions(assistantName) {
+              const actions = {
+-                 'Blog Writer': ['Write Introduction', 'Create Outline', 'Generate Headlines', 'Add SEO Keywords'],
++                 'Software Developer': ['Code Architecture', 'Database Design', 'API Planning', 'System Integration'],
++                 'Coding Assistant': ['Code Review', 'Debug Issue', 'Optimize Performance', 'Refactor Code'],
+                  'Technical Writer': ['Create API Docs', 'Write Tutorial', 'Generate Changelog', 'Code Comments'],
++                 'Blog Writer': ['Write Introduction', 'Create Outline', 'Generate Headlines', 'Add SEO Keywords'],
+                  'Customer Support': ['Friendly Response', 'Escalation Email', 'FAQ Answer', 'Apology Message'],
+-                 'Email Assistant': ['Professional Reply', 'Meeting Request', 'Follow-up Email', 'Thank You Note'],
+-                 'Social Media': ['Tweet Thread', 'Instagram Caption', 'LinkedIn Post', 'Facebook Update'],
+-                 'Academic Writer': ['Research Paper', 'Citation Format', 'Abstract Summary', 'Literature Review'],
+-                 'Creative Writer': ['Story Opening', 'Character Description', 'Plot Twist', 'Dialogue'],
+-                 'Code Assistant': ['Function Comments', 'README File', 'Bug Report', 'Code Review']
++                 'General Assistant': ['Improve Writing', 'Fix Grammar', 'Paraphrase Text', 'Generate Summary']
+              };
+              
+```
+
+---
+
+Now I need to update the demo section that shows the available assistants:
+
+---
+
+```diff
+                                  <div class="bg-blue-900/30 rounded-lg p-3 border border-blue-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>✍️</span>
+-                                         <span class="font-semibold text-white">Blog Writer</span>
++                                         <span>👨‍💻</span>
++                                         <span class="font-semibold text-white">Software Developer</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Articles, posts, SEO content</p>
++                                     <p class="text-xs text-gray-400">Full-stack development, architecture</p>
+                                  </div>
+                                  <div class="bg-green-900/30 rounded-lg p-3 border border-green-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>🔧</span>
+-                                         <span class="font-semibold text-white">Technical Writer</span>
++                                         <span>💻</span>
++                                         <span class="font-semibold text-white">Coding Assistant</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Documentation, tutorials, APIs</p>
++                                     <p class="text-xs text-gray-400">Code review, debugging, optimization</p>
+                                  </div>
+                                  <div class="bg-purple-900/30 rounded-lg p-3 border border-purple-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>💬</span>
+-                                         <span class="font-semibold text-white">Customer Support</span>
++                                         <span>🔧</span>
++                                         <span class="font-semibold text-white">Technical Writer</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Professional responses, FAQs</p>
++                                     <p class="text-xs text-gray-400">Documentation, tutorials, APIs</p>
+                                  </div>
+                                  <div class="bg-orange-900/30 rounded-lg p-3 border border-orange-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>📧</span>
+-                                         <span class="font-semibold text-white">Email Assistant</span>
++                                         <span>✍️</span>
++                                         <span class="font-semibold text-white">Blog Writer</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Professional emails, replies</p>
++                                     <p class="text-xs text-gray-400">Articles, posts, SEO content</p>
+                                  </div>
+                                  <div class="bg-pink-900/30 rounded-lg p-3 border border-pink-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>📱</span>
+-                                         <span class="font-semibold text-white">Social Media</span>
++                                         <span>💬</span>
++                                         <span class="font-semibold text-white">Customer Support</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Posts, captions, threads</p>
++                                     <p class="text-xs text-gray-400">Professional responses, FAQs</p>
+                                  </div>
+                                  <div class="bg-indigo-900/30 rounded-lg p-3 border border-indigo-500/30">
+                                      <div class="flex items-center gap-2 mb-1">
+-                                         <span>🎓</span>
+-                                         <span class="font-semibold text-white">Academic Writer</span>
++                                         <span>🤖</span>
++                                         <span class="font-semibold text-white">General Assistant</span>
+                                      </div>
+-                                     <p class="text-xs text-gray-400">Research papers, citations</p>
++                                     <p class="text-xs text-gray-400">General writing and assistance</p>
+                                  </div>
+-                                 <div class="bg-yellow-900/30 rounded-lg p-3 border border-yellow-500/30">
+-                                     <div class="flex items-center gap-2 mb-1">
+-                                         <span>🎨</span>
+-                                         <span class="font-semibold text-white">Creative Writer</span>
+                              </div>
+-                                     <p class="text-xs text-gray-400">Stories, creative content</p>
+                          </div>
+-                                 <div class="bg-gray-900/50 rounded-lg p-3 border border-gray-500/30">
+-                                     <div class="flex items-center gap-2 mb-1">
+-                                         <span>💻</span>
+-                                         <span class="font-semibold text-white">Code Assistant</span>
+-                                     </div>
+-                                     <p class="text-xs text-gray-400">Code docs, comments, reviews</p>
+-                                 </div>
+-                             </div>
+-                         </div>
+                      </div>
+                  </div>
+```
+
+---
+
+Now I need to update the text that mentions the number of assistants:
+
+---
+
+```diff
+                                  <div class="flex items-center gap-3">
+                                      <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+-                                     <span><strong class="text-white">Choose</strong> from 8 specialized AI assistants</span>
++                                     <span><strong class="text-white">Choose</strong> from 6 specialized AI assistants</span>
+                                  </div>
+                                  <div class="flex items-center gap-3">
+```
+
+---
+
+Perfect! I've successfully updated the AI Assistants feature to include only the 6 specific assistants you requested:
+
+## ✨ **Updated AI Assistants Menu**
+
+### 🤖 **Available Assistants (6):**
+
+1. **👨‍💻 Software Developer** - Full-stack development and architecture guidance
+   - Actions: Code Architecture, Database Design, API Planning, System Integration
+
+2. **💻 Coding Assistant** - Code review, debugging, and optimization help
+   - Actions: Code Review, Debug Issue, Optimize Performance, Refactor Code
+
+3. **🔧 Technical Writer** - Generate technical documentation and guides
+   - Actions: Create API Docs, Write Tutorial, Generate Changelog, Code Comments
+
+4. **✍️ Blog Writer** - Create engaging blog posts and articles
+   - Actions: Write Introduction, Create Outline, Generate Headlines, Add SEO Keywords
+
+5. **💬 Customer Support** - Craft professional customer responses
+   - Actions: Friendly Response, Escalation Email, FAQ Answer, Apology Message
+
+6. **🤖 General Assistant** - General purpose AI writing and assistance
+   - Actions: Improve Writing, Fix Grammar, Paraphrase Text, Generate Summary
+
+### 🚀 **What's Changed:**
+- ❌ Removed: Email Assistant, Social Media, Academic Writer, Creative Writer
+- ✅ Added: Software Developer, Coding Assistant, General Assistant
+- 🔄 Updated: All demo sections, action menus, and descriptions
+- 📊 Updated count from 8 to 6 assistants
+
+The hotkey `Ctrl+Space` (or `⌘+Space` on Mac) still works to open the AI Assistants menu with the updated list of 6 specialized assistants!
+
+---
+
+_**User**_
+
+Add attach video so user can watch that when clicked on watch demo.
+
+---
+
+_**Assistant**_
+
+
+
+---
+
+I'll add a video modal that opens when the "Watch Demo" button is clicked, using the `demo.mp4` file that's already in your project.
+
+---
+
+```diff
+                      Download for macOS
+                  </a>
+-                 <button class="glass px-8 py-4 rounded-full text-lg font-semibold hover-lift transition-all duration-300">
++                 <button class="glass px-8 py-4 rounded-full text-lg font-semibold hover-lift transition-all duration-300" onclick="openVideoModal()">
+                      Watch Demo
+                  </button>
+```
+
+---
+
+Now I'll add the video modal functionality to the JavaScript section:
+
+---
+
+
+
+---
+
 
 
 ---

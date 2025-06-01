@@ -46,6 +46,128 @@
             }
         }
     </script>
+    <script>
+        // Video Modal Functions
+        function openVideoModal() {
+            const modal = document.createElement('div');
+            modal.id = 'video-modal';
+            modal.className = 'fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-80 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300';
+            
+            modal.innerHTML = `
+                <div class="relative max-w-4xl mx-4 w-full">
+                    <div class="glass rounded-2xl p-4 transform scale-95 transition-all duration-300 video-modal-content">
+                        <div class="flex items-center justify-between mb-4">
+                            <h2 class="text-2xl font-bold gradient-text">CuePilot Demo</h2>
+                            <button onclick="closeVideoModal()" class="text-gray-400 hover:text-white text-2xl transition-colors">
+                                ✕
+                            </button>
+                        </div>
+                        
+                        <div class="relative bg-black rounded-xl overflow-hidden">
+                            <video 
+                                id="demo-video" 
+                                class="w-full h-auto max-h-[70vh]" 
+                                controls 
+                                autoplay
+                                poster=""
+                                onloadstart="showVideoLoader()"
+                                oncanplay="hideVideoLoader()"
+                            >
+                                <source src="demo.mp4" type="video/mp4">
+                                <p class="text-gray-300 p-8 text-center">
+                                    Your browser doesn't support HTML5 video. 
+                                    <a href="demo.mp4" class="text-electric-blue hover:underline">Download the video</a> instead.
+                                </p>
+                            </video>
+                            
+                            <!-- Video Loader -->
+                            <div id="video-loader" class="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
+                                <div class="text-center">
+                                    <div class="animate-spin w-8 h-8 border-2 border-electric-blue border-t-transparent rounded-full mx-auto mb-2"></div>
+                                    <p class="text-gray-300 text-sm">Loading demo video...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <p class="text-gray-400 text-sm mb-3">
+                                See CuePilot in action and learn how to boost your productivity
+                            </p>
+                            <div class="flex justify-center gap-4">
+                                <button onclick="closeVideoModal()" class="glass px-4 py-2 rounded-full text-sm hover:bg-gray-700 transition-colors">
+                                    Close
+                                </button>
+                                <a href="https://github.com/SurajAdsul/cuepilot-app/releases/download/1.0.0/CuePilot-1.0.0-universal.dmg" 
+                                   class="bg-gradient-to-r from-electric-blue to-purple-glow px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 text-white no-underline"
+                                   download="CuePilot-1.0.0-universal.dmg">
+                                    Download Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Animate in
+            setTimeout(() => {
+                modal.style.pointerEvents = 'auto';
+                modal.style.opacity = '1';
+                modal.querySelector('.video-modal-content').style.transform = 'scale(1)';
+            }, 50);
+            
+            // Close on background click
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeVideoModal();
+                }
+            });
+            
+            // Close on Escape key
+            document.addEventListener('keydown', handleVideoModalEscape);
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            if (modal) {
+                const video = document.getElementById('demo-video');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                
+                modal.style.opacity = '0';
+                modal.querySelector('.video-modal-content').style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+                
+                document.removeEventListener('keydown', handleVideoModalEscape);
+            }
+        }
+
+        function handleVideoModalEscape(e) {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        }
+
+        function showVideoLoader() {
+            const loader = document.getElementById('video-loader');
+            if (loader) {
+                loader.style.display = 'flex';
+            }
+        }
+
+        function hideVideoLoader() {
+            const loader = document.getElementById('video-loader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }
+    </script>
     <style>
         .glass {
             background: rgba(255, 255, 255, 0.1);
@@ -140,7 +262,7 @@
                    download="CuePilot-1.0.0-universal.dmg">
                     Download for macOS
                 </a>
-                <button class="glass px-8 py-4 rounded-full text-lg font-semibold hover-lift transition-all duration-300">
+                <button class="glass px-8 py-4 rounded-full text-lg font-semibold hover-lift transition-all duration-300" onclick="openVideoModal()">
                     Watch Demo
                 </button>
             </div>
